@@ -1,0 +1,255 @@
+ :root{
+    --colour1 :#000D2F;
+    --colour2 :#D7E2FF;
+    --backgroundcolour3 :#EEF3FF;
+    --colour4 :black;
+    --colour5 :white;
+ }
+
+ * {
+    padding: 0;
+    font-family:poppins, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body{
+    background-color: var(--backgroundcolour3);
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    left: 0;
+    top: 0;
+    background: var(--colour1);
+    padding-top: 5rem;   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar li{
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-left: 1.8rem;
+}
+
+.sidebar a{
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.7rem 0 0.7rem 0;
+}
+
+.sidebar span{
+    font-weight: semi-bold;
+}
+
+.sidebar i{
+    font-size: 1.2rem;
+    padding-right: 1.5rem;
+}
+
+.sidebar a.active {
+    background-color: #fff;
+    /* padding-top: 0.5rem;
+    padding-bottom: 0.5rem; */
+    color: var(--backgroundcolour3);
+    border-radius: 30px 0px 0px 30px;
+    color: #000;
+    padding-left: 1rem;
+}
+
+.sidebar li a:hover{
+    background-color: #fff;
+    /* padding-top: 0.5rem;
+    padding-bottom: 0.5rem; */
+    color: var(--backgroundcolour3);
+    border-radius: 30px 0px 0px 30px;
+    color: #000;
+    padding-left: 1rem;
+}
+
+.logout{
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.7rem 0 0.7rem 0;
+    padding-left: 1.8rem;
+}
+
+
+
+.logout a i{
+    font-size: 1.2rem;
+    padding-right: 1.5rem;
+}
+
+.logout a:hover{
+    background-color: #fff;
+    color: var(--backgroundcolour3);
+    border-radius: 30px 30px 30px 30px;
+    color: #000;
+    padding-left: 1rem;
+    margin-right: 5rem;
+}
+
+
+/*Navbar*/
+
+.navbar{ 
+    position: fixed;
+    margin-left: 300px;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 300px);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.navbar__left{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 150px;
+}
+.nav-icon{
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.navbar__right ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+.navbar__right ul li{
+    margin-left: 2rem;
+}
+
+.navbar__right ul li a{
+    color: #000;
+    font-size: 1rem;
+}
+
+#userName{
+    font-weight: bold;
+}
+
+#designation{
+    font-size: 0.8rem;
+}
+
+.navbar__right ul li a i{
+    font-size: 1.5rem;
+}
+
+/*Calender*/
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #12121f;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  width: 45rem;
+  height: 52rem;
+  background-color: #222227;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+
+.month {
+  width: 100%;
+  height: 12rem;
+  background-color: #167e56;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.month i {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.month h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.month p {
+  font-size: 1.6rem;
+}
+
+.weekdays {
+  width: 100%;
+  height: 5rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.weekdays div {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: calc(44.2rem / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+}
+
+.days div {
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  width: calc(40.2rem / 7);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s;
+}
+
+.days div:hover:not(.today) {
+  background-color: #262626;
+  border: 0.2rem solid #777;
+  cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.today {
+  background-color: #167e56;
+}

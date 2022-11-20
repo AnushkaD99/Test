@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Ezymange</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="#" class="active"><i class="fa-solid fa-house"></i><span></span>Home</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>Paysheet</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-brands fa-wpforms"></i><span>Report Issue</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-eye"></i><span>School Details</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-calendar-plus"></i><span>Appointments</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-angles-up"></i><span>Promotions</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-sharp fa-solid fa-file-circle-plus"></i><span>Salary Increment Form</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a li>
+            <li>
+                <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
+            </li>
+        </ul>
+        <hr>
+        <div class="logout">
+            <a href="#"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+        </div>
+    </div>
+
+    <!-- //Navigation bar -->
+
+    <nav class="navbar">
+        <div class="navbar__left">
+            <div class="nav-icon" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="logo">
+                <img src="Ezymanage lgo.png" alt="logo">
+            </div>
+        </div>
+        <div class="navbar__right">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span id="userName">User</span><br>
+                        <span id="designation">Designation</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Calender -->
+    <div class="container">
+        <div class="calendar">
+            <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
