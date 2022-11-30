@@ -42,9 +42,9 @@ const renderCalendar = () => {
     "December",
   ];
 
-  document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+  document.querySelector(".date span").innerHTML = months[date.getMonth()];
 
-  document.querySelector(".date p").innerHTML = new Date().toDateString();
+  // document.querySelector(".date p").innerHTML = new Date().toDateString();
 
   let days = "";
 
@@ -80,3 +80,14 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 renderCalendar();
+
+//--------------------------//
+let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".nav-icon");
+sidebarBtn.onclick = function () {
+  sidebar.classList.toggle("active");
+  if (sidebar.classList.contains("active")) {
+    sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+  } else
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}

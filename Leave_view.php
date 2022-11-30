@@ -1,3 +1,18 @@
+<?php
+include('config.php');
+
+//********************************************** */
+session_start();
+$Userid  = $_SESSION['id'];
+$sql = "SELECT username FROM teacher WHERE id='$Userid'";
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
+$Username = $row['username'];
+
+//********************************************** */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +64,7 @@
         </ul>
         <div class="logout">
             <hr>
-            <a href="#"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
 
@@ -77,9 +92,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <span id="userName">User</span><br>
-                            <span id="designation">Designation</span>
+                        <a href="#">
+                            <span id="userName"><?php echo $Username ?></span><br>
+                            <span id="designation">Teacher</span>
                         </a>
                     </li>
                 </ul>
@@ -91,35 +106,57 @@
                     <h1>LEAVE FORM</h1>
                 </div>
                 <div class="forum">
-                    <span>Application For Leave</span>
-                    <form action="">
-                        <div class="forum_box">
-                            <div class="forum_con">
-                                <label for="reason">Reason for leave :</label><br>
-                                <textarea id="reason" name="reason"></textarea><br>
-                                <label for="commencing_date">Date of commencing date :</label><br>
-                                <input type="date" id="commencing_date" name="commencing_date"><br>
-                                <label for="resuming_date">Date of resuming duties :</label><br>
-                                <input type="date" id="resuming_date" name="resuming_date"><br>
-                                <label for="total_leaves">Number of days leave applied for :</label><br>
-                                <div class="leave">
-                                    <div class="leave_t">
-                                        <label for="casual">Casual :</label>
-                                        <input type="number" id="casual" name="casual" min="0" max="42">
-                                    </div>
-                                    <div class="leave_t">
-                                        <label for="medical">Medical :</label>
-                                        <input type="number" id="medical" name="medical" min="0" max="42">
-                                    </div>
-                                    <div class="leave_t">
-                                        <label for="other">Other :</label>
-                                        <input type="number" id="other" name="other" min="0" max="42">
-                                    </div>
+                    <span class="forum-topic">Application For Leave</span>
+                    <div class="view">
+                        <div class="for um_box">
+                            <div class="forum_view-top">
+                                <div>
+                                    <span class="title">Form No :</span>
+                                    <span><?php echo $Username ?></span>
+                                </div>
+                                <div>
+                                    <span class="title">Submitted date :</span>
+                                    <span><?php echo $Username ?></span>
                                 </div>
                             </div>
+                            <div class="forum_view">
+                                <span class="title">Name:</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Designation :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Date of First Appointment:</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Date of Commencing leave :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Date of resuming duties :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Number of days leave appplied for :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Leaves taken in current year :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Reason for leave :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
+                            <div class="forum_view">
+                                <span class="title">Principal's approvement :</span>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div>
                         </div>
-                        <input id="submit-btn" type="submit">
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="right">
@@ -129,26 +166,6 @@
                         <span>Pending ...</span>
                         <button>View</button>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="month">
-                        <i class="fas fa-angle-left prev"></i>
-                        <div class="date">
-                            <h1>Calender</h1>
-                            <span></span>
-                        </div>
-                        <i class="fas fa-angle-right next"></i>
-                    </div>
-                    <div class="weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                    </div>
-                    <div class="days"></div>
                 </div>
                 <div class="card">
                     <h3>Remaining Leave Details</h3>
@@ -168,7 +185,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script src="script.js"></script>
