@@ -13,6 +13,7 @@ $Username = $row['username'];
 
 $reasonErr = $commencing_dateErr = $resuming_dateErr = $intervalErr = "";
 $reason = $commencing_date = $resuming_date = $casual = $medical = $other ="";
+$submittedDate = date("Y-m-d");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["reason"])) {
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               }
             else{
                 if($reason != null && $commencing_date != null && $resuming_date != null){
-                    $sql = "INSERT INTO leave_details (reason, commencing_date, resuming_date, casual, medical, other, userId) VALUES ('$reason', '$commencing_date', '$resuming_date', '$casual', '$medical', '$other', '$Userid')";
+                    $sql = "INSERT INTO leave_details (reason, commencing_date, resuming_date, casual, medical, other, userId, submitted_date) VALUES ('$reason', '$commencing_date', '$resuming_date', '$casual', '$medical', '$other', '$Userid', '$submittedDate')";
                     if (mysqli_query($con, $sql)) {
                         echo "<script> alert(\"New record created successfully!\"); </script>";
                     } else {
@@ -204,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
                         </div>
-                        <input id="submit-btn" type="submit">
+                        <input class="submit-btn" type="submit">
                     </form>
                 </div>
             </div>
@@ -213,7 +214,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h3>LATEST APPLICATION STATUS</h3>
                     <div class="status-bt">
                         <span>Pending ...</span>
-                        <a href="Leave_view.php">
+                        <?php
+                        $query_last_id = "SELECT leave_id FROM leave_details WHERE userId='$Userid' ORDER BY leave_id DESC LIMIT 1";
+                        $result_last_id = mysqli_query($con, $query_last_id);
+                        $row_last_id = mysqli_fetch_array($result_last_id);
+                        $last_id = $row_last_id['leave_id'];
+                        ?>
+                        <a href="Leave_view.php?leave_id=<?php echo $last_id;?>">
                             <button>View</button>
                         </a>
                     </div>
