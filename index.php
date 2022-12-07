@@ -6,14 +6,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	if(!empty($_POST['Username']) && !empty($_POST['Password'])){
 		$username = $_POST['Username'];
 		$password = $_POST['Password'];
+		$hashed_password = md5($password);
 
-		$sql = "SELECT id,username,password FROM teacher WHERE username='$username' AND password='$password'";
+		$sql = "SELECT id,username,password FROM teacher WHERE username='$username' AND password='$hashed_password'";
 		$result = mysqli_query($con,$sql);
 				$row = mysqli_fetch_array($result);
 					if($row) {
 						$_SESSION['id'] =  $row['id'];
 						$_SESSION['username'] = $_POST['Username'];
-						$_SESSION['password'] = $_POST['Password'];
+						$_SESSION['password'] = $hashed_password;
 						header('Location:Leave_form.php');
 					}
 					else {
@@ -29,17 +30,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   <title>Ezymange</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&family=Ubuntu&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a87d6dd22b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
 	<ul>
 		<li class="image">
-			<img class="loginPageImg" src="images/loginpage.png">
+			<img class="loginPageImg" src="loginpage.png">
 		</li>
 	<li class="login">	
-	<img class="logo" src="images/logo.png">
+	<img class="logo" src="logo.png">
 	<h1>Sign in to Ezymanage</h1>
-	<p>New User? <a href="Registration/Registration.php">Sign Up</a> now</p>
+	<!-- <p>New User? <a href="Registration/Registration.php">Sign Up</a> now</p> -->
 	<br>
 	<form method="POST" action="">
   	<!--<?php include('errors.php'); ?>-->
@@ -57,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		<?php echo $loginErr; echo $reqErr; ?>
 	</div>  
 </li>
+<?php echo md5('123456'); ?>
 </ul>
 <script>
   const togglePassword = document.querySelector('#togglePassword');
@@ -71,6 +73,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 });
 
 </script>
-
 </body>
 </html>

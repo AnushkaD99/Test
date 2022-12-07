@@ -17,6 +17,7 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
 // $leave_id = $row_selectLeave['leave_id'];
 $submittedDate = $row_selectLeave['submitted_date'];
 $reason = $row_selectLeave['reason'];
+$approvement = $row_selectLeave['approvement'];
 $commencing_date = $row_selectLeave['commencing_date'];
 $resuming_date = $row_selectLeave['resuming_date'];
 $casual = $row_selectLeave['casual'];
@@ -163,10 +164,10 @@ $days = $casual + $medical + $other;
                                 <span class="title">Reason for leave :</span>
                                 <div class="spc"><?php echo $reason ?></div>
                             </div>
-                            <!-- <div class="forum_view">
+                            <div class="forum_view">
                                 <span class="title">Principal's approvement :</span>
-                                <div class="spc"><?php echo $Username ?></div>
-                            </div> -->
+                                <div class="spc"><?php echo $approvement ?></div>
+                            </div>
                             <div class="forum_view">
                                 <a href="Leave_form.php"><button class="submit-btn">Back</button></a>
                             </div>
@@ -184,6 +185,10 @@ $days = $casual + $medical + $other;
                             <th>Reason</th>
                             <th>View</th>
                         </tr>
+                        <tr>
+                            <td colspan="4"><hr></td>
+                        </tr>
+
                     <?php
                     $query_selectLeaves = "SELECT * FROM leave_details WHERE userId='$Userid'";
                     $result_selectLeaves = mysqli_query($con,$query_selectLeaves);
@@ -193,7 +198,10 @@ $days = $casual + $medical + $other;
                             <td> <?php echo $row_selectLeaves['leave_id']; ?> </td>
                             <td> <?php echo $row_selectLeaves['submitted_date']; ?> </td>
                             <td> <?php echo $row_selectLeaves['reason']; ?> </td>
-                            <td> <a href="Leave_view.php?leave_id=<?php echo $row_selectLeaves['leave_id']; ?>">view</a> </td>
+                            <td> <a href="Leave_view.php?leave_id=<?php echo $row_selectLeaves['leave_id']; ?>">view</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><hr></td>
                         </tr>
                         <?php $i++;
                     }
