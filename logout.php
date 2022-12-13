@@ -1,5 +1,5 @@
 <?php
-	include("config.php");
+	include("inc/config.php");
 	session_start();
 	session_destroy();
     echo "<script> alert(\"Log Out Successful!\"); </script>";

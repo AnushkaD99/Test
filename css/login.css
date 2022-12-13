@@ -1,0 +1,169 @@
+body {
+  font-family: poppins, sans-serif;
+  margin: 0;
+
+}
+
+a {
+  color: #000D2F;
+}
+
+
+.input-group {
+  margin: 10px 0px;
+}
+
+.input-group input {
+  height: 30px;
+  width: 95%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+.input-group select{
+  height: 30px;
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+.btn button {
+  color: red;
+  font-size: small;
+}
+
+.btn button:hover {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: small;
+}
+
+.success {
+  color: #3c763d;
+  background: #dff0d8;
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
+
+.fa-solid,
+.fa-eye {
+  margin-left: -27px;
+  cursor: pointer;
+  color: gray;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+li {
+  display: inline-block;
+
+}
+
+.loginPageImg {
+  height: 700px;
+  /*width: 520px;*/
+  margin-left: -50px;
+}
+
+.login {
+  vertical-align: top;
+  text-align: left;
+  margin: 75px 0 0 250px;
+}
+
+.logo {
+  height: 120px;
+}
+
+.btn {
+  padding: 12px 220px 12px 220px;
+}
+
+/* Register*/
+
+.right {
+  width: 50%;
+  left: 50%;
+}
+
+.left {
+  width: 50%;
+  left: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0 10%;
+  background-color: rgba(215, 226, 255, 0.6);
+  padding: 0px 5%;
+  border-radius: 20px;
+}
+
+.frm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EEF3FF;
+  height: 100%;
+}
+
+.radio {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+}
+
+.radio div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reg-btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.reg-btn button {
+  width: 200px;
+  padding: 12px 0;
+  font-size: 15px;
+  color: white;
+  background: #000D2F;
+  border: none;
+  border-radius: 5px;
+}
+
+.reg-btn input {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 15px;
+  color: white;
+  background: #000D2F;
+  border: none;
+  border-radius: 5px;
+}
+
+.reg-btn button:hover {
+  cursor: pointer;
+}
+
+.lgmsg{
+  text-align: center;
+  margin: 10px 0;
+}

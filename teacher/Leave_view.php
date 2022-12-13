@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('../inc/config.php');
 
 //********************************************** */
 session_start();
@@ -17,7 +17,6 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
 // $leave_id = $row_selectLeave['leave_id'];
 $submittedDate = $row_selectLeave['submitted_date'];
 $reason = $row_selectLeave['reason'];
-$approvement = $row_selectLeave['approvement'];
 $commencing_date = $row_selectLeave['commencing_date'];
 $resuming_date = $row_selectLeave['resuming_date'];
 $casual = $row_selectLeave['casual'];
@@ -26,33 +25,20 @@ $other = $row_selectLeave['other'];
 $days = $casual + $medical + $other;
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>Ezymange</title>
-</head>
-
-<body>
+<?php require_once '../inc/header.php'; ?>
     <div class="sidebar">
         <ul>
             <li>
-                <a href="#"><i class="fa-solid fa-house"></i><span></span>Home</a>
+                <a href="Home.php"><i class="fa-solid fa-house"></i><span></span>Home</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>Paysheet</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
+                <a href="Karyasadanaya1.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
             </li>
             <li>
-                <a href="#" class="active"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
+                <a href="Leave_form.php" class="active"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa-brands fa-wpforms"></i><span>Report Issue</span></a>
@@ -77,42 +63,13 @@ $days = $casual + $medical + $other;
         </ul>
         <div class="logout">
             <hr>
-            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="../logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
 
     <!-- //Navigation bar -->
     <div class="content">
-        <div class="navbar">
-            <div class="navbar__left">
-                <div class="nav-icon" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <div class="logo">
-                    <img src="Ezymanage lgo.png" alt="logo">
-                </div>
-            </div>
-            <div class="navbar__right">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-bell"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-circle-user"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span id="userName"><?php echo $Username ?></span><br>
-                            <span id="designation">Teacher</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <?php require_once '../inc/navbar.php'; ?>
         <div class="container">
             <div class="left">
                 <div class="topic">
@@ -164,10 +121,10 @@ $days = $casual + $medical + $other;
                                 <span class="title">Reason for leave :</span>
                                 <div class="spc"><?php echo $reason ?></div>
                             </div>
-                            <div class="forum_view">
+                            <!-- <div class="forum_view">
                                 <span class="title">Principal's approvement :</span>
-                                <div class="spc"><?php echo $approvement ?></div>
-                            </div>
+                                <div class="spc"><?php echo $Username ?></div>
+                            </div> -->
                             <div class="forum_view">
                                 <a href="Leave_form.php"><button class="submit-btn">Back</button></a>
                             </div>
@@ -211,7 +168,4 @@ $days = $casual + $medical + $other;
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
-
-</html>
+<?php require_once '../inc/footer.php'; ?>
