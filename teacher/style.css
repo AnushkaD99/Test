@@ -1,0 +1,295 @@
+:root {
+  --colour1: #000d2f;
+  --colour2: #d7e2ff;
+  --backgroundcolour3: #eef3ff;
+  --colour4: black;
+  --colour5: white;
+}
+
+* {
+  padding: 0;
+  font-family: poppins, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  background-color: var(--backgroundcolour3);
+}
+
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  left: 0;
+  top: 0;
+  background: var(--colour1);
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar li {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-left: 1.8rem;
+  margin-right: 36px;
+}
+
+.sidebar a {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.7rem 0 0.7rem 0;
+}
+
+.sidebar span {
+  font-weight: semi-bold;
+}
+
+.sidebar i {
+  font-size: 1.2rem;
+  padding-right: 1.5rem;
+}
+
+.sidebar a.active {
+  background-color: #fff;
+  /* padding-top: 0.5rem;
+      padding-bottom: 0.5rem; */
+  color: var(--backgroundcolour3);
+  border-radius: 30px 0px 0px 30px;
+  color: #000;
+  padding-left: 1rem;
+}
+
+.sidebar li a:hover {
+  background-color: #fff;
+  /* padding-top: 0.5rem;
+      padding-bottom: 0.5rem; */
+  color: var(--backgroundcolour3);
+  border-radius: 30px 0px 0px 30px;
+  color: #000;
+  padding-left: 1rem;
+}
+
+.sidebar hr {
+  margin-top: 261px;
+  width: 75%;
+  align-self: center;
+}
+
+.logout {
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.7rem 0 0.7rem 0;
+  padding-left: 1.8rem;
+}
+
+.logout a i {
+  font-size: 1.2rem;
+  padding-right: 1.5rem;
+}
+
+.logout a:hover {
+  background-color: #fff;
+  color: var(--backgroundcolour3);
+  border-radius: 30px 30px 30px 30px;
+  color: #000;
+  padding-left: 1rem;
+  margin-right: 5rem;
+}
+
+/*Navbar*/
+
+.navbar {
+  position: fixed;
+  margin-left: 300px;
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 300px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: +1;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 150px;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.navbar__right ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.navbar__right ul li {
+  margin-left: 2rem;
+}
+
+.navbar__right ul li a {
+  color: #000;
+  font-size: 1rem;
+}
+
+#userName {
+  font-weight: bold;
+}
+
+#designation {
+  font-size: 0.8rem;
+}
+
+.navbar__right ul li a i {
+  font-size: 1.5rem;
+}
+
+.rectangle1 {
+  position: absolute;
+  width: 946px;
+  height: 1050px;
+  left: 416px;
+  top: 128px;
+
+  background: rgba(215, 226, 255, 0.6);
+  border-radius: 25px;
+}
+
+.content {
+  /*background: var(--backgroundcolour3);*/
+  width: calc(100% - 300px);
+  left: 300px;
+  padding-top: 150px;
+  padding-left: 438px;
+}
+
+.forum-topic {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 30px 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.fieldset1 {
+  box-sizing: border-box;
+
+  width: 283px;
+  height: 79px;
+  left: 1055px;
+  top: 138px;
+
+  border: 1px solid #000000;
+  border-radius: 15px;
+}
+
+.col1 {
+  width: 450px;
+  padding-top: 20px;
+  padding-left: 110px;
+}
+
+.col2 {
+  padding-top: 30px;
+  margin-left: 50px;
+  width: 473px;
+  padding-left: 160px;
+}
+
+.span1 {
+  margin-top: 7px;
+  margin-left: 50px;
+  padding-top: 5px;
+}
+
+.fieldset2 {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 900px;
+  height: 140px;
+  margin-left: 25px;
+  margin-top: 20px;
+
+  border: 1px solid #000000;
+  border-radius: 15px;
+}
+
+.subtopic {
+  margin-top: 10px;
+  margin-left: 15px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.table1 {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.th {
+  width: 300px;
+}
+
+.fieldset3 {
+  box-sizing: border-box;
+  width: 900px;
+  height: 680px;
+  margin-left: 25px;
+  margin-top: 200px;
+  border: 1px solid #000000;
+  border-radius: 15px;
+}
+
+.table2 {
+    width: 835px;
+    margin-top: 20px;
+  margin-left: 30px;
+    border:1px solid black;
+    border-collapse: collapse;
+  }
+
+  .table2 th{
+    border:1px solid black;
+    border-collapse: collapse;
+    height: 100px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .table2 td{
+    border:1px solid black;
+    border-collapse: collapse;
+    padding-left: 10px;
+    text-align: left;
+  }
+
+  .td{
+    width: 310px;
+    text-align: left;
+    padding-left: 10px;
+  }

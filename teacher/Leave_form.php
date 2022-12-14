@@ -4,10 +4,6 @@ include('../inc/config.php');
 //********************************************** */
 session_start();
 $Userid  = $_SESSION['id'];
-$sql = "SELECT username FROM teacher WHERE id='$Userid'";
-$result = mysqli_query($con,$sql);
-$row = mysqli_fetch_array($result);
-$Username = $row['username'];
 
 //********************************************** */
 
@@ -52,6 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $other = $_POST["other"];
     }
 
+    // if(strlen($reason) > 100){
+    //     $reasonErr = "Reason should be less than 100 characters";
+    // }
+
     $date1 = strtotime($commencing_date);
     $date2 = strtotime($resuming_date);
     $interval = (($date2 - $date1)/60/60/24);
@@ -86,13 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="sidebar">
         <ul>
             <li>
-                <a href="Home.php"><i class="fa-solid fa-house"></i><span></span>Home</a>
+                <a href="index.php"><i class="fa-solid fa-house"></i><span></span>Home</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>Paysheet</span></a>
             </li>
             <li>
-                <a href="Karyasadanaya1.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
+                <a href="Karyasadanaya.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
             </li>
             <li>
                 <a href="Leave_form.php" class="active"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
         <div class="logout">
             <hr>
-            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="../logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
 
@@ -171,16 +171,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card">
                     <h3>LATEST APPLICATION STATUS</h3>
                     <div class="status-bt">
-                        <span>Pending ...</span>
                         <?php
                         $query_last_id = "SELECT leave_id FROM leave_details WHERE userId='$Userid' ORDER BY leave_id DESC LIMIT 1";
                         $result_last_id = mysqli_query($con, $query_last_id);
                         $row_last_id = mysqli_fetch_array($result_last_id);
-                        $last_id = $row_last_id['leave_id'];
                         ?>
+                        <?php if(empty($row_last_id)) { ?>
+                            <span class="no">No Applications</span>
+                        <?php } else { $last_id = $row_last_id['leave_id'];?>
+                        <span>Pending ...</span>
                         <a href="Leave_view.php?leave_id=<?php echo $last_id;?>">
                             <button>View</button>
                         </a>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="card">

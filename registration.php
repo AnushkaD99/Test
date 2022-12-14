@@ -2,23 +2,15 @@
 session_start();
 include('inc/config.php');
 $reqErr = $loginErr = $name_err = $user_err = $des_err = $email_err = $pass_err = $con_pass_err ="";
-$full_name = $user_name = $designation = $email = $password = $confirm_password = "";
-if($_SERVER['REQUEST_METHOD'] == "POST"  && isset($_POST['register'])) {
-    $full_name = $_POST['full_name'];
-    $user_name = $_POST['user_name'];
-    $designation = $_POST['designation'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $hashed = md5($password);
-
-
+$regDate = date("Y-m-d");
+if($_SERVER['REQUEST_METHOD'] == "POST") {
 	if(empty($_POST['full_name'])){
 		$name_err = "*Plase enter your name";
 	}
     if(empty($_POST['user_name'])){
         $user_err = "*Plase enter your user name";
     }
-    if(empty($_POST['designation'])){
+    if(!isset($_POST['designation'])){
         $des_err = "*Plase choose your designation";
     }
     if(empty($_POST['email'])){
@@ -38,6 +30,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"  && isset($_POST['register'])) {
     if(strlen($_POST['password']) < 8){
         $pass_err = "*Password must be at least 8 characters";
     }
+    // Given password
+    $password = $_POST['password'];
+
     // Validate password strength
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
@@ -51,110 +46,102 @@ if($_SERVER['REQUEST_METHOD'] == "POST"  && isset($_POST['register'])) {
     }
 
     if(empty($name_err) && empty($user_err) && empty($des_err) && empty($email_err) && empty($pass_err) && empty($con_pass_err)){
-        if($designation == 'Teacher'){
-            $sql = "SELECT * FROM teacher WHERE username = '$user_name'";
-            $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result);
-            if($row) {
-                $user_err = "* Username already exists.";
-            }
-            else{
-                $sql = "INSERT INTO teacher (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
-                $result = mysqli_query($con,$sql);
-                if($result){
-                    echo "<script> alert(\"User Added Successfully\"); </script>";
-                    header('Location:index.php');
-                }
-                else{
-                    die("Error: 6");
-                    $reqErr = "*Something went wrong";
-                }
-            }
+        $full_name = $_POST['full_name'];
+        $user_name = $_POST['user_name'];
+        $designation = $_POST['designation'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $hashed = md5($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$user_name'";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_array($result);
+        if($row) {
+            $user_err = "* Username already exists.";
         }
-        else if($designation == 'Principal'){
-            $sql = "SELECT * FROM principal WHERE username = '$user_name'";
+        else{
+            $sql = "INSERT INTO users (full_name, username, designation, email, password, reg_date) VALUES ('$full_name', '$user_name', '$designation', '$email', '$hashed', '$regDate')";
             $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result);
-            if($row) {
-                $user_err = "* Username already exists.";
+            if($result){
+                echo "<script> alert(\"Registration Successful!\"); </script>";
+                header('Location:index.php');
             }
             else{
-                $sql = "INSERT INTO principal (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
-                $result = mysqli_query($con,$sql);
-                if($result){
-                    echo "<script> alert(\"User Added Successfully\"); </script>";
-                    header('Location:index.php');
-                }
-                else{
-                    die("Error: 5");
-                    $reqErr = "*Something went wrong";
-                }
-            }
-        }
-        else if($designation == 'Director'){
-            $sql = "SELECT * FROM director WHERE username = '$user_name'";
-            $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result);
-            if($row) {
-                $user_err = "* Username already exists.";
-            }
-            else{
-                $sql = "INSERT INTO director (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
-                $result = mysqli_query($con,$sql);
-                if($result){
-                    echo "<script> alert(\"User Added Successfully\"); </script>";
-                    header('Location:index.php');
-                }
-                else{
-                    die("Error: 4");
-                    $reqErr = "*Something went wrong";
-                }
-            }
-        }
-        else if($designation == 'Clerk - School'){
-            $sql = "SELECT * FROM clerk_school WHERE username = '$user_name'";
-            $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result);
-            if($row) {
-                $user_err = "* Username already exists.";
-            }
-            else{
-                $sql = "INSERT INTO clerk_school (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
-                $result = mysqli_query($con,$sql);
-                if($result){
-                    echo "<script> alert(\"User Added Successfully\"); </script>";
-                    header('Location:index.php');
-                }
-                else{
-                    die("Error: 3");
-                    $reqErr = "*Something went wrong";
-                }
-            }
-        }
-        else if($designation == 'Clerk - College'){
-            $sql = "SELECT * FROM clerk_college WHERE username = '$user_name'";
-            $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result);
-            if($row) {
-                $user_err = "* Username already exists.";
-            }
-            else{
-                $sql = "INSERT INTO clerk_college (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
-                $result = mysqli_query($con,$sql);
-                if($result){
-                    echo "<script> alert(\"User Added Successfully\"); </script>";
-                    header('Location:index.php');
-                }
-                else{
-                    die("Error: 1");
-                    $reqErr = "Something went wrong";
-                }
+                $reqErr = "*Something went wrong";
             }
         }
 
+        // if($designation == 'Teacher'){
+        //     $sql = "SELECT * FROM teacher WHERE username = '$user_name'";
+        //     $result = mysqli_query($con,$sql);
+        //     $row = mysqli_fetch_array($result);
+        //     if($row) {
+        //         $user_err = "* Username already exists.";
+        //     }
+        //     else{
+        //         $sql = "INSERT INTO teacher (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
+        //         $result = mysqli_query($con,$sql);
+        //         if($result){
+        //             echo "<script> alert(\"Registration Successful!\"); </script>";
+        //             header('Location:index.php');
+        //         }
+        //         else{
+        //             $reqErr = "*Something went wrong";
+        //         }
+        //     }
+        // }
+        // else if($designation == 'Principal'){
+        //     $sql = "SELECT * FROM pricipal WHERE username = '$user_name'";
+        //     $result = mysqli_query($con,$sql);
+        //     $row = mysqli_fetch_array($result);
+        //     if($row) {
+        //         $user_err = "* Username already exists.";
+        //     }
+        //     else{
+        //         $sql = "INSERT INTO principal (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
+        //         $result = mysqli_query($con,$sql);
+        //         if($result){
+        //             echo "<script> alert(\"Registration Successful!\"); </script>";
+        //             header('Location:index.php');
+        //         }
+        //         else{
+        //             $reqErr = "*Something went wrong";
+        //         }
+        //     }
+        // }
+        // else if($designation == 'Director'){
+        //     $sql = "INSERT INTO director (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
+        //     $result = mysqli_query($con,$sql);
+        //     if($result){
+        //         header('Location:login.php');
+        //     }
+        //     else{
+        //         $reqErr = "*Something went wrong";
+        //     }
+        // }
+        // else if($designation == 'Clerk - School'){
+        //     $sql = "INSERT INTO clerk_school (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
+        //     $result = mysqli_query($con,$sql);
+        //     if($result){
+        //         header('Location:login.php');
+        //     }
+        //     else{
+        //         $reqErr = "*Something went wrong";
+        //     }
+        // }
+        // else if($designation == 'Clerk - College'){
+        //     $sql = "INSERT INTO clerk_college (full_name, username, email, password) VALUES ('$full_name', '$user_name', '$email', '$hashed')";
+        //     $result = mysqli_query($con,$sql);
+        //     if($result){
+        //         header('Location:login.php');
+        //     }
+        //     else{
+        //         $reqErr = "Something went wrong";
+        //     }
+        // }
+
     }
     else{
-        die("Error: 2");
         $reqErr = "Please fill out all the fields";
     }
 }    
@@ -182,35 +169,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST"  && isset($_POST['register'])) {
                     <input type="text" name="full_name" class="inpt" placeholder="Full Name">
                 </div>
                 <div class="input-group">
-                    <lable for="fullname">User Name : <sup>*</sup></lable>
+                    <lable for="user_name">User Name : <sup>*</sup></lable>
                     <span class="error"><?php echo $user_err; ?></span>
                     <input type="text" name="user_name" class="inpt" placeholder="User Name">
                 </div>
                 <div class="input-group">
                     <lable for="Designation">Designation : <sup>*</sup></lable>
                     <span class="error"><?php echo $des_err; ?></span>
-                    <div class="radio">
-                        <div>
-                            <input type="radio" name="designation" class="inpt" value="teacher">Teacher
-                        </div>
-                        <div>
-                            <input type="radio" name="designation" class="inpt" value="principal">Principal
-                        </div>
-                    </div>
+                    <select id="designation" name="designation">
+						<option value="Teacher">Teacher</option>
+						<option value="Principal">Principal</option>
+					</select>
                 </div>
                 <div class="input-group">
-                    <lable for="fullname">Email : <sup>*</sup></lable>
+                    <lable for="email">Email : <sup>*</sup></lable>
                     <span class="error"><?php echo $email_err; ?></span>
                     <input type="email" name="email" class="inpt" placeholder="abc@gmail.com">
                 </div>
                 <div class="input-group">
-                    <lable for="fullname">Password : <sup>*</sup></lable>
+                    <lable for="password">Password : <sup>*</sup></lable>
                     <span class="error"><?php echo $pass_err; ?></span>
                     <input type="password" name="password" class="inpt" id="id_password" placeholder="********">
                     <i class="fa-solid fa-eye" id="togglePassword"></i>
                 </div>
                 <div class="input-group">
-                    <lable for="fullname">Confirm Passsword : <sup>*</sup></lable>
+                    <lable for="confirm password">Confirm Passsword : <sup>*</sup></lable>
                     <span class="error"><?php echo $con_pass_err; ?></span>
                     <input type="password" name="confirm_password" class="inpt" id="id_password" placeholder="********">
                     <i class="fa-solid fa-eye" id="togglePassword"></i>

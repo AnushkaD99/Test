@@ -562,3 +562,48 @@
  #frm5{
   display: none;
  }
+
+ /*Teacher Home */
+ .forum img {
+    width: 80%;
+ }
+
+ .forum h1{
+  display: flex;
+  padding: 10px;
+ }
+
+ #uname {
+  color: #549FE2;
+ }
+
+ .dtl{
+  padding: 5%;
+ }
+
+ .dtl-k{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .dtls-card {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    align-items: center;
+    text-align: left;
+ }
+
+ .dtls-card span {
+  margin: 0 10px;
+ }
+
+ .right img{
+  width: 100%;
+ }
+
+ .no{
+  margin: auto;
+  align-items: center;
+ }

@@ -1,3 +1,8 @@
+<?php
+$Username = $_SESSION['username'];
+$Designation = $_SESSION['designation'];
+?>
+
 <div class="navbar">
     <div class="navbar__left">
         <div class="nav-icon" onclick="toggleSidebar()">
@@ -22,7 +27,7 @@
             <li>
                 <a href="#">
                     <span id="userName"><?php echo $Username ?></span><br>
-                    <span id="designation">Teacher</span>
+                    <span id="designation"><?php echo $Designation ?></span>
                 </a>
             </li>
         </ul>

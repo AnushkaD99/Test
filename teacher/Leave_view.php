@@ -4,10 +4,6 @@ include('../inc/config.php');
 //********************************************** */
 session_start();
 $Userid  = $_SESSION['id'];
-$sql = "SELECT username FROM teacher WHERE id='$Userid'";
-$result = mysqli_query($con,$sql);
-$row = mysqli_fetch_array($result);
-$Username = $row['username'];
 
 //********************************************** */
 $leave_id = $_GET['leave_id'];
@@ -35,7 +31,7 @@ $days = $casual + $medical + $other;
                 <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>Paysheet</span></a>
             </li>
             <li>
-                <a href="Karyasadanaya1.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
+                <a href="Karyasadanaya.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
             </li>
             <li>
                 <a href="Leave_form.php" class="active"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
