@@ -231,7 +231,7 @@ body {
 .fieldset1 legend,
 .fieldset2 legend,
 .fieldset3 legend {
-  margin-left: 40px;
+  margin: auto;
   padding-left: 5px;
   padding-right: 5px;
 
@@ -240,6 +240,7 @@ body {
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
+  text-align: center;
   /* identical to box height */
 
   color: #000000;
@@ -333,21 +334,20 @@ body {
 
 .rectangle2 {
   width: 393px;
-  height: 90px;
   left: 481px;
   top: 628px;
   margin-left: 30px;
   margin-top: 25px;
-  align-items: center;
-
+  display: flex;
+  /* align-items: center; */
   background: #ffffff;
   border-radius: 10px;
 }
 
 .span1 {
   /* Not Yet Referred */
-  margin-left: 130px;
-  padding-top: 50px;
+  margin: auto;
+  padding: 25px 0; 
 
   font-family: "Poppins";
   font-style: normal;
@@ -433,7 +433,6 @@ body {
 .span2 {
     /* Po. No */
     margin-left: 10px;
-  
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;

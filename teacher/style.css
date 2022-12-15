@@ -36,7 +36,6 @@ body {
   width: 100%;
   margin-top: 0.5rem;
   padding-left: 1.8rem;
-  margin-right: 36px;
 }
 
 .sidebar a {
@@ -57,8 +56,6 @@ body {
 
 .sidebar a.active {
   background-color: #fff;
-  /* padding-top: 0.5rem;
-      padding-bottom: 0.5rem; */
   color: var(--backgroundcolour3);
   border-radius: 30px 0px 0px 30px;
   color: #000;
@@ -67,18 +64,10 @@ body {
 
 .sidebar li a:hover {
   background-color: #fff;
-  /* padding-top: 0.5rem;
-      padding-bottom: 0.5rem; */
   color: var(--backgroundcolour3);
   border-radius: 30px 0px 0px 30px;
   color: #000;
   padding-left: 1rem;
-}
-
-.sidebar hr {
-  margin-top: 261px;
-  width: 75%;
-  align-self: center;
 }
 
 .logout {
@@ -87,6 +76,8 @@ body {
   padding: 0.7rem 0 0.7rem 0;
   padding-left: 1.8rem;
 }
+
+
 
 .logout a i {
   font-size: 1.2rem;
@@ -102,12 +93,26 @@ body {
   margin-right: 5rem;
 }
 
+.content {
+  position: relative;
+  background: var(--backgroundcolour3);
+  width: calc(100% - 300px);
+  left: 300px;
+}
+
+.logout hr {
+  width: 80%;
+  margin-bottom: 2px;
+  background-color: #A0ACBD;
+}
+
 /*Navbar*/
 
 .navbar {
+  z-index: +1;
+  background: var(--backgroundcolour3);
+  left: 300px;
   position: fixed;
-  margin-left: 300px;
-  display: flex;
   padding: 10px 20px;
   align-items: center;
   background-color: #fff;
@@ -115,7 +120,6 @@ body {
   justify-content: space-between;
   width: calc(100% - 300px);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  z-index: +1;
 }
 
 .navbar__left {
@@ -163,7 +167,7 @@ body {
 .rectangle1 {
   position: absolute;
   width: 946px;
-  height: 1050px;
+  /* height: 1050px; */
   left: 416px;
   top: 128px;
 
@@ -266,30 +270,53 @@ body {
 }
 
 .table2 {
-    width: 835px;
-    margin-top: 20px;
+  width: 835px;
+  margin-top: 20px;
   margin-left: 30px;
-    border:1px solid black;
-    border-collapse: collapse;
-  }
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
-  .table2 th{
-    border:1px solid black;
-    border-collapse: collapse;
-    height: 100px;
-    text-align: left;
-    padding-left: 10px;
-  }
+.table2 th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 100px;
+  text-align: left;
+  padding-left: 10px;
+}
 
-  .table2 td{
-    border:1px solid black;
-    border-collapse: collapse;
-    padding-left: 10px;
-    text-align: left;
-  }
+.table2 td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding-left: 10px;
+  text-align: left;
+}
 
-  .td{
-    width: 310px;
-    text-align: left;
-    padding-left: 10px;
-  }
+.td {
+  width: 310px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.back-btn {
+  margin: auto;
+  text-align: center;
+}
+
+.back-btn button {
+  margin: 20px auto;
+  width: 90%;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--colour1);
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: semi-bold;
+}
+
+.back-btn button:hover {
+  background: white;
+  border: 2px solid var(--colour1);
+  color: black;
+}

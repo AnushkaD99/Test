@@ -1,9 +1,16 @@
 <?php
 include('../inc/config.php');
-
-//********************************************** */
 session_start();
+?>
+<?php
+ if(empty($_SESSION['id'])){
+    header('Location:../index.php');;
+ }else {
+?>
+<?php
 $Userid  = $_SESSION['id'];
+
+$descriptioErr = $linkErr = "";
 
 //********************************************** */
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -20,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $link = $_POST['link'];
         $submittedDate = date("Y-m-d");
 
-        $sql = "INSERT INTO projects (description, link, submittedDate, clerk_id) VALUES ('$description', '$link', '$submittedDate', '$Userid')";
+        $sql = "INSERT INTO projects (description, link, submittedDate, user_id) VALUES ('$description', '$link', '$submittedDate', '$Userid')";
         $result = mysqli_query($con,$sql);
         if($result){
             echo "<script> alert(\"New record created successfully!\"); </script>";
@@ -71,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="sidebar">
         <ul>
             <li>
-                <a href="#"><i class="fa-solid fa-house"></i><span></span>Home</a>
+                <a href="index.php"><i class="fa-solid fa-house"></i><span></span>Home</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>View</span></a>
@@ -80,14 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <a href="#"><i class="fa-solid fa-file-lines"></i><span>School Profile</span></a>
             </li>
             <li>
-                <a href="#" class="active"><i class="fa-solid fa-file"></i><span>Projects</span></a>
+                <a href="" class="active"><i class="fa-solid fa-building"></i><span>Projects</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
             </li>
         </ul>
-        <hr>
         <div class="logout">
+        <hr>
             <a href="../logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
@@ -122,19 +129,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </fieldset>
 
     <fieldset class="fieldset2">
-        <legend><b>Response Of the Zonal Education Office</b> </legend>
+        <legend><b>Response Of the Zonal Education Office<br>for the previous project</b> </legend>
         <div class="rectangle2">
             <span class="span1">Not Yet Refered</span>
         </div>
         <h1 class="feedback">Feedback :</h1>
         <div class="rectangle2">
-
+            <span class="span1">No</span>
         </div>
     </fieldset>
 
     <fieldset class="fieldset3">
-        <legend><b>Previoously Submitted Projects</b></legend>
-        <div class="rectangle3">
+        <legend><b>Previously Submitted Projects</b></legend>
+        <!-- <div class="rectangle3">
             <span class="span2">PR.No.05</span>
             <span><button id="view-btn"><b>View</b></button></span>
         </div>
@@ -149,8 +156,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="rectangle3">
             <span class="span2">PR.No.02</span>
             <span><button id="view-btn"><b>View</b></button></span>
-        </div>
-        <button onclick="myFunction()" id="seemore-btn">See more</button>
+        </div> -->
+        <!-- *************************************************** -->
+        <?php
+            $query_selectLeaves = "SELECT * FROM projects WHERE user_id='$Userid' ORDER BY id DESC";
+            $result_selectLeaves = mysqli_query($con,$query_selectLeaves);
+            //$row_selectLeaves = mysqli_fetch_array($result_selectLeaves);
+            if(empty(" ")) { ?>
+                <span class="no">No Projects Subbmitted Yet</span>
+            <?php } else {
+                //$i = $row_selectLeaves['id'];
+                while ($row_selectLeaves = mysqli_fetch_array($result_selectLeaves)) { ?>
+                    <div class="rectangle3">
+                        <span class="span2"><?php echo "PR.No." . $row_selectLeaves['id']; ?></span>
+                        <a href="project_view.php?id=<?php echo $row_selectLeaves['id']; ?>">
+                            <span><button id="view-btn">View</button>
+                        </a>
+                    </div>
+                    <?php //$i++;
+                }
+            }
+        ?>
+        <!-- ************************************************** -->
         <!--
             js --
             <script>
@@ -173,10 +200,5 @@ function myFunction() {
         -->
 
     </fieldset>
-
-
-    <form>
-
-
-    </form>
 <?php require_once '../inc/footer.php'; ?>
+<?php } ?>

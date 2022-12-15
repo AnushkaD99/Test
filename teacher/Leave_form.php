@@ -3,6 +3,13 @@ include('../inc/config.php');
 
 //********************************************** */
 session_start();
+?>
+<?php
+ if(empty($_SESSION['id'])){
+    header('Location:../index.php');;
+ }else {
+?>
+<?php
 $Userid  = $_SESSION['id'];
 
 //********************************************** */
@@ -113,7 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="#"><i class="fa-sharp fa-solid fa-file-circle-plus"></i><span>Salary Increment Form</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a li>
+                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a>
+            </li>
             <li>
                 <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
             </li>
@@ -227,3 +235,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 <?php require_once '../inc/footer.php'; ?>
+<?php } ?>

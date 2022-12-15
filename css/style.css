@@ -33,7 +33,7 @@
 
  .sidebar li {
    width: 100%;
-   margin-top: 0.5rem;
+   margin-top: 0.29rem;
    padding-left: 1.8rem;
  }
 
@@ -41,7 +41,7 @@
    display: block;
    color: #fff;
    font-size: 1rem;
-   padding: 0.7rem 0 0.7rem 0;
+   padding: 0.7rem 0;
  }
 
  .sidebar span {
@@ -177,7 +177,7 @@
  }
 
  .forum {
-   margin-top: 30px;
+   margin-bottom: 30px;
    width: 600px;
    height: auto;
    background-color: var(--colour2);
@@ -546,64 +546,128 @@
    color: #000000;
  }
 
- #frm2{
-  display: none;
+ #frm2 {
+   display: none;
 
  }
 
- #frm3{
-  display: none;
+ #frm3 {
+   display: none;
  }
 
- #frm4{
-  display: none;
+ #frm4 {
+   display: none;
  }
 
- #frm5{
-  display: none;
+ #frm5 {
+   display: none;
  }
 
  /*Teacher Home */
  .forum img {
-    width: 80%;
+   width: 80%;
  }
 
- .forum h1{
-  display: flex;
-  padding: 10px;
+ .forum h1 {
+   display: flex;
+   padding: 10px 50px;
  }
 
- #uname {
-  color: #549FE2;
+ .forum h1 span {
+   color: #549FE2;
  }
 
- .dtl{
-  padding: 5%;
+ .dtl {
+   padding: 5%;
  }
 
- .dtl-k{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ .dtl-k {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
  }
 
  .dtls-card {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px;
-    align-items: center;
-    text-align: left;
+   display: flex;
+   justify-content: space-between;
+   margin: 15px;
+   align-items: center;
+   text-align: left;
  }
 
  .dtls-card span {
-  margin: 0 10px;
+   margin: 0 10px;
  }
 
- .right img{
+ .right img {
+   width: 100%;
+ }
+
+ .no {
+   margin: auto;
+   align-items: center;
+ }
+
+ /*issue*/
+ .input-group select {
+   height: 30px;
+   width: 100%;
+   padding: 5px 10px;
+   font-size: 16px;
+   border-radius: 5px;
+   border: 1px solid gray;
+   margin-bottom: 10px;
+ }
+
+ .btn_iss {
+   width: auto;
+   height: auto;
+   margin: 10px 0;
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .btn_iss button {
+   margin: 20px;
+   padding: 0 60px;
+   height: 50px;
+   border: 2px solid black;
+   border-radius: 25px;
+   background-color: var(--colour5);
+   font-size: 18px;
+   color: black;
+   font-weight: semi-bold;
+ }
+
+  .btn_iss button:hover {
+    border: none;
+    border-radius: 25px;
+    background: var(--colour1);
+    color: #ffffff;
+  }
+
+ .btn_iss button.active {
+   margin: 20px;
+   padding: 0 60px;
+   height: 50px;
+   border: none;
+   border-radius: 25px;
+   background-color: var(--colour1);
+   font-size: 18px;
+   color: #ffffff;
+   font-weight: semi-bold;
+ }
+
+
+ /*SchoolClerk*/
+ .dt table {
   width: 100%;
- }
+  border-collapse: collapse;
+}
 
- .no{
-  margin: auto;
-  align-items: center;
- }
+.dt table th,
+td {
+  text-align: left;
+  padding: 10px 0;
+
+}

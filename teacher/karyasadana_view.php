@@ -1,5 +1,12 @@
 <?php include('../inc/config.php');
 session_start();
+?>
+<?php
+ if(empty($_SESSION['id'])){
+    header('Location:../index.php');;
+ }else {
+?>
+<?php
 $Userid  = $_SESSION['id'];
 
 $Username = $_SESSION['username'];
@@ -10,7 +17,9 @@ $query_selectLeave = "SELECT * FROM karyasadana INNER JOIN users ON karyasadana.
 $result_selectLeave = mysqli_query($con,$query_selectLeave);
 $row_selectLeave = mysqli_fetch_array($result_selectLeave);
     $id = $row_selectLeave["id"];
-    $name = $row_selectLeave["users.name"];
+    $Userid = $row_selectLeave["userId"];
+    $name = $row_selectLeave["full_name"];
+    $designation = $row_selectLeave["designation"];
     $start_date = $row_selectLeave["start_date"];
     $end_date = $row_selectLeave["end_date"];
     $submittedDate = $row_selectLeave["submittedDate"];
@@ -44,16 +53,16 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
 </head>
 
 <body>
-    <!-- <div class="sidebar">
+    <div class="sidebar">
         <ul>
             <li>
-                <a href="index.php"><i class="fa-solid fa-house"></i><span></span>Home</a>
+                <a href="#" class="active"><i class="fa-solid fa-house"></i><span></span>Home</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i><span>Paysheet</span></a>
             </li>
             <li>
-                <a href="Karyasadanaya.php" class="active"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
+                <a href="Karyasadanaya.php"><i class="fa-solid fa-file-lines"></i><span>Karyasadanaya</span></a>
             </li>
             <li>
                 <a href="Leave_form.php"><i class="fa-solid fa-file"></i><span>Leave Form</span></a>
@@ -74,16 +83,17 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                 <a href="#"><i class="fa-sharp fa-solid fa-file-circle-plus"></i><span>Salary Increment Form</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a li>
+                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a>
+            </li>
             <li>
                 <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
             </li>
         </ul>
         <div class="logout">
             <hr>
-            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="../logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
-    </div> -->
+    </div>
 
     <!-- //Navigation bar -->
 
@@ -128,7 +138,7 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                     <fieldset class="fieldset1">
                         <p class="span1">
                             <b>Evaluation period</b><br>
-                            <?php echo ($start_date); ?> To <?php echo ($end_date); ?>
+                            <?php echo ($start_date); ?> <b>To</b> <?php echo ($end_date); ?>
                         </p>
                     </fieldset>
                 </td>
@@ -157,12 +167,12 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                 <tr>
                     <td>
                         <ul>
-                            <li><b>Position :</b> Teacher </li>
+                            <li><b>Position :</b> </b> <?php echo ($designation); ?> </li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li><b>Registration Number :</b> 000001 </li>
+                            <li><b>Registration Number :</b> </b> <?php echo ($Userid); ?> </li>
                         </ul>
                     </td>
                     <td>
@@ -200,13 +210,13 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                         Teaching
                     </th>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($tasks1); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Indicators1); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Problems1); ?>
                     </td>
                 </tr>
                 <tr>
@@ -214,13 +224,13 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                         Extracurricular activities
                     </th>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($tasks2); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Indicators2); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Problems2); ?>
                     </td>
                 </tr>
                 <tr>
@@ -228,13 +238,13 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                         Student welfare & guidance
                     </th>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($tasks3); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Indicators3); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Problems3); ?>
                     </td>
                 </tr>
                 <tr>
@@ -242,13 +252,13 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                         Special services for the school
                     </th>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($tasks4); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Indicators4); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Problems4); ?>
                     </td>
                 </tr>
                 <tr>
@@ -256,19 +266,23 @@ $row_selectLeave = mysqli_fetch_array($result_selectLeave);
                         School community relations
                     </th>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($tasks5); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Indicators5); ?>
                     </td>
                     <td>
-                        Lorem ipsum dolor sit amet.
+                        <?php echo ($Problems5); ?>
                     </td>
                 </tr>
                 </tr>
             </table>
         </fieldset>
+        <div class="back-btn">
+            <a href="Karyasadanaya.php"><button class="submit-btn">Back</button></a>
+        </div>
     </div>
 </body>
 
 </html>
+<?php } ?>

@@ -2,15 +2,14 @@
 <?php
 //********************************************** */
 session_start();
+
 $Userid  = $_SESSION['id'];
 ?>
-
 <?php
  if(empty($_SESSION['id'])){
-    redirect('location:../index.php');
- }
+    header('Location:../index.php');;
+ }else {
 ?>
-
 <?php require_once '../inc/header.php' ?>
 <div class="sidebar">
     <ul>
@@ -42,7 +41,8 @@ $Userid  = $_SESSION['id'];
             <a href="#"><i class="fa-sharp fa-solid fa-file-circle-plus"></i><span>Salary Increment Form</span></a>
         </li>
         <li>
-            <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a li>
+            <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a>
+        </li>
         <li>
             <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
         </li>
@@ -61,7 +61,7 @@ $Userid  = $_SESSION['id'];
             </div> -->
             <div class="forum">
                 <img src="../images/logo.png" alt="">
-                <h1>Hey <span id="uname"><?php echo $Username; ?></span>,<br>Welcome to Ezymanage!</h1>
+                <h1>Hey<?php echo " " . $Username; ?>,<br>Welcome to Ezymanage!</h1>
             </div>
             <div class="forum">
                 <div class="dtl">
@@ -132,3 +132,4 @@ $Userid  = $_SESSION['id'];
 </div>
 
 <?php require_once '../inc/footer.php' ?>
+<?php } ?>

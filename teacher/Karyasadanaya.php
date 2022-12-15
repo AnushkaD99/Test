@@ -3,6 +3,13 @@ include('../inc/config.php');
 
 //********************************************** */
 session_start();
+?>
+<?php
+ if(empty($_SESSION['id'])){
+    header('Location:../index.php');;
+ }else {
+?>
+<?php
 $Userid  = $_SESSION['id'];
 
 
@@ -244,7 +251,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <a href="#"><i class="fa-sharp fa-solid fa-file-circle-plus"></i><span>Salary Increment Form</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a li>
+                <a href="#"><i class="fa-solid fa-arrows-rotate"></i><span>Transfers</span></a>
+            </li>
             <li>
                 <a href="#"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
             </li>
@@ -420,19 +428,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     <?php
                     $query_selectLeaves = "SELECT * FROM karyasadana WHERE userId='$Userid' ORDER BY id DESC LIMIT 5";
                     $result_selectLeaves = mysqli_query($con,$query_selectLeaves);
-                    $row_selectLeaves = mysqli_fetch_array($result_selectLeaves);
-                    if(empty($row_selectLeaves)) { ?>
+                    if(empty($row_last_id)) { ?>
                         <span class="no">No Karyasadana</span>
                     <?php } else {
-                        $i = $row_selectLeaves['id'];
                         while ($row_selectLeaves = mysqli_fetch_array($result_selectLeaves)) { ?>
                             <div class="status-bt">
-                                <span><?php echo $row_selectLeaves['end_date']; ?></span>
+                                <span><?php echo $row_selectLeaves['start_date']; ?></span>
                                 <a href="karyasadana_view.php?id=<?php echo $row_selectLeaves['id']; ?>">
                                     <button>View</button>
                                 </a>
                             </div>
-                            <?php $i++;
+                            <?php //$i++;
                         }
                     }
                     ?>
@@ -504,3 +510,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     </script>
 <?php require_once '../inc/footer.php'; ?>
+<?php } ?>
